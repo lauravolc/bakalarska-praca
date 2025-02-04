@@ -24,13 +24,23 @@ function handleRequest() {
         if (data.error) {
             alert('Chyba: ' + data.error);
         } else {
-            resultBox.textContent = data.result;
-            // Pridanie triedy pre animáciu zvýraznenia výsledku
-            resultBox.classList.add('result-generated');
-            // Po uplynutí 1 sekundy sa trieda odstráni
-            setTimeout(() => {
-                resultBox.classList.remove('result-generated');
-            }, 1000);
+            const resultText = data.result;
+            resultBox.textContent = ""; // Vyčistenie predchádzajúceho textu
+            resultBox.classList.add('result-active'); // Pridanie aktívnej animácie
+
+            // Postupné zobrazovanie písmen po jednom
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < resultText.length) {
+                    resultBox.textContent += resultText[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        resultBox.classList.remove('result-active'); // Odstránenie animácie po dokončení
+                    }, 2000);
+                }
+            }, 100); // Rýchlosť zobrazovania písmen (100ms na písmeno)
         }
     })
     .catch(error => {
