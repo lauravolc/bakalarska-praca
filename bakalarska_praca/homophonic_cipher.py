@@ -66,6 +66,3 @@ class HomophonicCipher(CipherBase):
                 if code in seen:
                     print(f"Duplicate found for code {code} with char {char}")
                 seen.add(code)
-
-#transpozicne sifry
-#adfgvx

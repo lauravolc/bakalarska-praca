@@ -7,14 +7,14 @@ from caesar_cipher import CaesarCipher
 from monoalphabetic_cipher import MonoalphabeticCipher
 from playfair_cipher import PlayfairCipher
 from homophonic_cipher import HomophonicCipher
-from polyalphabetic_cipher import PolyalphabeticCipher
+from vigener_cipher import PolyalphabeticCipher
 from TranspositionCipher import TranspositionCipher
 from ADFGVXCipher import ADFGVXCipher
 
 app = Flask(__name__)
 CORS(app)
 # Prednastavený tajný kľúč
-TAJNY_KLUC = "laura"
+TAJNY_KLUC = "bakalarska praca"
 
 def over_kluc(zadany_kluc, tajny_kluc=TAJNY_KLUC):
     return zadany_kluc == tajny_kluc

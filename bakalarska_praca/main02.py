@@ -2,12 +2,12 @@ from caesar_cipher import CaesarCipher
 from monoalphabetic_cipher import MonoalphabeticCipher
 from playfair_cipher import PlayfairCipher
 from homophonic_cipher import HomophonicCipher
-from polyalphabetic_cipher import PolyalphabeticCipher
+from vigener_cipher import PolyalphabeticCipher
 from TranspositionCipher import TranspositionCipher
 from ADFGVXCipher import ADFGVXCipher
 
 
-def over_kluc(zadany_kluc, tajny_kluc="laura"):
+def over_kluc(zadany_kluc, tajny_kluc="bakalarska praca"):
     if zadany_kluc != tajny_kluc:
         print("Nesprávny kľúč! Prístup zamietnutý.")
         return False
