@@ -1,2 +1,0 @@
-# bakalarska-praca
-# bakalarska-praca
