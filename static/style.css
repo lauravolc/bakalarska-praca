@@ -1,0 +1,207 @@
+body {
+background: url("bg.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Animovaný nadpis s 3D efektom */
+.app-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    perspective: 500px; /* Perspektíva pre 3D efekt */
+}
+
+/* 3D písmo - vytvára extrúziu (hĺbku) */
+.app-name span {
+    display: inline-block;
+    opacity: 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px #aaa,
+                 2px 2px 0px #999,
+                 3px 3px 0px #777,
+                 4px 4px 0px #555,
+                 5px 5px 0px #333,
+                 6px 6px 5px rgba(0, 0, 0, 0.7); /* 3D extrúzia */
+    transform: rotateX(10deg) translateY(0);
+    animation: fadeInOut3D 4s infinite;
+}
+
+/* Každé písmeno sa zobrazí s oneskorením */
+.app-name span:nth-child(1) { animation-delay: 0s; }
+.app-name span:nth-child(2) { animation-delay: 0.2s; }
+.app-name span:nth-child(3) { animation-delay: 0.4s; }
+.app-name span:nth-child(4) { animation-delay: 0.6s; }
+.app-name span:nth-child(5) { animation-delay: 0.8s; }
+.app-name span:nth-child(6) { animation-delay: 1s; }
+.app-name span:nth-child(7) { animation-delay: 1.2s; }
+.app-name span:nth-child(8) { animation-delay: 1.4s; }
+.app-name span:nth-child(9) { animation-delay: 1.6s; }
+.app-name span:nth-child(10) { animation-delay: 1.8s; }
+.app-name span:nth-child(11) { animation-delay: 2s; }
+
+/* Animácia pre postupné zobrazenie a 3D efekt */
+@keyframes fadeInOut3D {
+    0% { opacity: 0; transform: rotateX(90deg) translateY(-20px) scale(0.8); }
+    20% { opacity: 1; transform: rotateX(0deg) translateY(0) scale(1); }
+    80% { opacity: 1; transform: rotateX(0deg) translateY(0) scale(1); }
+    100% { opacity: 0; transform: rotateX(-90deg) translateY(20px) scale(0.8); }
+}
+
+/* Container pre formuláre a výsledok */
+.container {
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* Formulár - necháva pôvodnú tmavú farbu */
+.form-container {
+    background: rgba(0, 0, 0, 0.6); /* Pôvodná tmavá farba */
+}
+
+/* Výsledný box - zmenený na svetlomodrú */
+.result-container {
+    background: rgba(173, 216, 230, 0.2); /* Svetlomodrá s priehľadnosťou */
+    backdrop-filter: blur(10px); /* Efekt skla */
+    border: 1px solid rgba(173, 216, 230, 0.3); /* Jemný svetlomodrý obrys */
+}
+
+.form-container, .result-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.4);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Nadpis výsledku - zabezpečí biely text */
+.result-container h2 {
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Výsledný box, text nastavený na biely */
+#result-box {
+    width: 100%;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-size: 18px;
+    color: white;
+    transition: box-shadow 0.5s ease;
+}
+
+.result-generated {
+    animation: resultHighlight 3s ease forwards;
+}
+
+@keyframes resultHighlight {
+    0% { box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Štýly pre formulárové elementy */
+.input-group {
+    position: relative;
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #aaa;
+    transition: 0.3s;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label,
+.input-group select:focus ~ label {
+    display: none;
+}
+
+select {
+    cursor: pointer;
+}
+
+button {
+    padding: 14px 24px;
+    font-size: 18px;
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 10px rgba(46, 125, 50, 0.5);
+    width: 100%;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #9E9E9E, #757575);
+    transform: scale(1.05);
+    box-shadow: 0px 8px 15px rgba(46, 125, 50, 0.7);
+}
+
+/* Štýly pre video pozadie */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    object-fit: cover;
+}

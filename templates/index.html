@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Šifrovanie správ</title>
+    <!-- Google Fonts: Orbitron -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <!-- Prepojenie na externý CSS súbor -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1 class="app-name">
+        <span>K</span>
+        <span>R</span>
+        <span>Y</span>
+        <span>P</span>
+        <span>T</span>
+        <span>O</span>
+        <span>S</span>
+        <span>F</span>
+        <span>É</span>
+        <span>R</span>
+        <span>A</span>
+    </h1>
+    <div class="container">
+        <div class="form-container">
+            <div class="input-group">
+                <input type="text" id="tajnyKluc" placeholder=" " required>
+                <label>Overovací kľúč</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="nastavenie" placeholder=" " required>
+                <label>Tajný kľúč</label>
+            </div>
+            <div class="input-group">
+                <select id="typSifry" required>
+                    <option value="" disabled selected></option>
+                    <option value="caesar">Caesarova šifra</option>
+                    <option value="monoalphabetic">Monoalfabetická šifra</option>
+                    <option value="playfair">Playfairova šifra</option>
+                    <option value="homophonic">Homofónna šifra</option>
+                    <option value="polyalphabetic">Polyalfabetická šifra</option>
+                    <option value="transposition">Transpozičná šifra</option>
+                    <option value="adfgvx">ADFGVX šifra</option>
+                </select>
+                <label>Typ šifry</label>
+            </div>
+            <div class="input-group">
+                <textarea id="message" rows="4" placeholder=" " required></textarea>
+                <label>Správa</label>
+            </div>
+            <div class="input-group">
+                <select id="mode" required>
+                    <option value="encrypt">Šifrovať</option>
+                    <option value="decrypt">Dešifrovať</option>
+                </select>
+            </div>
+            <button onclick="handleRequest()">Potvrdiť</button>
+        </div>
+
+        <div class="result-container">
+            <!-- Nadpis výsledku -->
+            <h2>Výsledok</h2>
+            <div id="result-box"></div>
+        </div>
+    </div>
+
+    <!-- Prepojenie na externý JavaScript súbor -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
